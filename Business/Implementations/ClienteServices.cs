@@ -90,5 +90,32 @@ namespace Business.Implementations
             return nuevoCliente;
         }
 
+        public ClienteView Actualizar(int id, ClienteView cliente)
+        {
+            // Buscar el artículo por su ID
+            var clienteExistente = _bcontext.Clientes.Find(id);
+            if (clienteExistente == null)
+            {
+                throw new Exception("El cliente no existe.");
+            }
+
+            // Actualizar los datos del cliente con los valores proporcionados
+            clienteExistente.Nombre = cliente.Nombre;
+            clienteExistente.Direccion = cliente.Direccion;
+            clienteExistente.Telefono = cliente.Telefono;
+
+            // Guardar los cambios en la base de datos
+            _bcontext.SaveChanges();
+
+            // Devolver el cliente actualizado
+            return new ClienteView
+            {
+                Idcliente = clienteExistente.Idcliente,
+                Nombre = clienteExistente.Nombre,
+                Direccion = clienteExistente.Direccion,
+                Telefono = clienteExistente.Telefono,
+            };
+        }
+
     }
 }

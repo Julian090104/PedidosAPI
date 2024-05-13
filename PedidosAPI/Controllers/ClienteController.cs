@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces;
+using Core.ModelsView;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -70,8 +71,21 @@ namespace Infrastructure.Controllers
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> Put(int id, [FromBody] ClienteView cliente)
         {
+            try
+            {
+                // Llamar a una función de servicio para actualizar el cliente
+                var clienteActualizado = _services.Actualizar(id, cliente);
+
+                // Devolver una respuesta indicando la actualización exitosa
+                return Ok(clienteActualizado);
+            }
+            catch (Exception ex)
+            {
+                // Devolver una respuesta de error si ocurre una excepción
+                return BadRequest(ex.Message);
+            }
         }
 
         // DELETE api/<ClienteController>/5

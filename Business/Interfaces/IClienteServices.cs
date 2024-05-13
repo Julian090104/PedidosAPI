@@ -15,5 +15,7 @@ namespace Business.Interfaces
         ClienteView Buscar(int id);
 
         Cliente Agregar(int id, string nombre, string direccion, string telefono);
+
+        ClienteView Actualizar(int id, ClienteView cliente);
     }
 }
