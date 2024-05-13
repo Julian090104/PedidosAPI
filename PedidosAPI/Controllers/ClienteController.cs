@@ -90,8 +90,18 @@ namespace Infrastructure.Controllers
 
         // DELETE api/<ClienteController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            try
+            {
+                int document = 0;
+                document = _services.Eliminar(id);
+                return Ok(document);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

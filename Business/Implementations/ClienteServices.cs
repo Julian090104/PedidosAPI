@@ -117,5 +117,13 @@ namespace Business.Implementations
             };
         }
 
+        public int Eliminar(int id)
+        {
+            var clienteEliminar = _bcontext.Clientes.Find(id);
+            _bcontext.Clientes.Remove(clienteEliminar);
+            _bcontext.SaveChanges();
+            return id;
+        }
+
     }
 }
