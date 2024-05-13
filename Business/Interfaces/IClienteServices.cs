@@ -10,5 +10,7 @@ namespace Business.Interfaces
     public interface IClienteServices
     {  
         List<ClienteView> ConsultarServicios();
+
+        ClienteView Buscar(int id);
     }
 }

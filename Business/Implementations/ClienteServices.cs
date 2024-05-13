@@ -42,5 +42,26 @@ namespace Business.Implementations
             }
             return listaClienteView;
         }
+
+        public ClienteView Buscar(int id)
+        {
+            var clienteSearch = _bcontext.Clientes.Find(id);
+            if (clienteSearch == null)
+            {
+                return null;
+            }
+            var clienteSearchView = new ClienteView
+            {
+                Idcliente = clienteSearch.Idcliente,
+                Nombre = clienteSearch.Nombre, 
+                Direccion= clienteSearch.Direccion,
+                Telefono= clienteSearch.Telefono,
+            };
+
+            return clienteSearchView;
+        }
+
+
+
     }
 }

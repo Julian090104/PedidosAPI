@@ -41,12 +41,22 @@ namespace Infrastructure.Controllers
 
 
         // GET api/<ClienteController>/5
-
-
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            return "value";
+            try
+            {
+                var document = _services.Buscar(id);
+                if (document == null)
+                {
+                    return NotFound();
+                }
+                return Ok(document);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // POST api/<ClienteController>
