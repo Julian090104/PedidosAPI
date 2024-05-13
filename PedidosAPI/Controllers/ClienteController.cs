@@ -30,16 +30,6 @@ namespace Infrastructure.Controllers
             }
         }
 
-
-        //// GET: api/<ClienteController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-
-
         // GET api/<ClienteController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
@@ -49,7 +39,7 @@ namespace Infrastructure.Controllers
                 var document = _services.Buscar(id);
                 if (document == null)
                 {
-                    return NotFound();
+                    return NotFound("documento nulo");
                 }
                 return Ok(document);
             }
@@ -61,8 +51,21 @@ namespace Infrastructure.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult> Post(int id, string nombre, string direccion, string telefono)
         {
+            try
+            {
+                // Pasar los parámetros al servicio para agregar el Cliente
+                var nuevoCliente = _services.Agregar(id, nombre, direccion, telefono);
+
+                // Devolver una respuesta indicando la creación exitosa del Cliente
+                return CreatedAtAction(nameof(GetById), new { id = nuevoCliente.Idcliente }, nuevoCliente);
+            }
+            catch (Exception ex)
+            {
+                // Devolver una respuesta de error si ocurre una excepción
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/<ClienteController>/5

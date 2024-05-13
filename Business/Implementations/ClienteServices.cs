@@ -61,7 +61,34 @@ namespace Business.Implementations
             return clienteSearchView;
         }
 
+        public Cliente Agregar(int id, string nombre, string direccion, string telefono)
+        {
+            // Verificar si el ID ya existe en la base de datos
+            var existeCliente = _bcontext.Clientes.Any(a => a.Idcliente == id);
+            if (existeCliente)
+            {
+                throw new Exception("El ID del cliente ya existe en la base de datos.");
+            }
 
+            // Validar otros campos si es necesario
+            if (string.IsNullOrEmpty(nombre))
+            {
+                throw new Exception("El nombre del cliente es obligatoria.");
+            }
+            // Agregar el nuevo cliente
+            var nuevoCliente = new Cliente
+            {
+                Idcliente = id,
+                Nombre = nombre,
+                Direccion = direccion, 
+                Telefono = telefono,
+            };
+
+            _bcontext.Clientes.Add(nuevoCliente);
+            _bcontext.SaveChanges();
+
+            return nuevoCliente;
+        }
 
     }
 }
