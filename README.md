@@ -11,7 +11,7 @@ crear los metodos CRUD para todas las tablas
 
 tablas:
 1. Articulo: ok, ok, ok, ok, ok.
-2. Cliente: ok, 
-3. Pedido:
-4. DetallePedido:
+2. Cliente: ok, ok, ok, ok, ok.
+3. Pedido: ok, ok, ok, ok, ok.
+4. DetallePedido: ok,
 
