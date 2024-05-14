@@ -36,6 +36,7 @@ namespace PedidosAPI
             
             services.AddTransient<IArticuloServices, ArticuloServices>();
             services.AddTransient<IClienteServices, ClienteServices>();
+            services.AddTransient<IPedidoServices, PedidoServices>();
             //services.AddScoped<IAswServices, AswServices>();
 
 
