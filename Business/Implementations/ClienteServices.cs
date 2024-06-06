@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Business.Interfaces;
 using Core.ModelsView;
 using Infrastructure.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Implementations
 {
@@ -53,9 +54,9 @@ namespace Business.Implementations
             var clienteSearchView = new ClienteView
             {
                 Idcliente = clienteSearch.Idcliente,
-                Nombre = clienteSearch.Nombre, 
-                Direccion= clienteSearch.Direccion,
-                Telefono= clienteSearch.Telefono,
+                Nombre = clienteSearch.Nombre,
+                Direccion = clienteSearch.Direccion,
+                Telefono = clienteSearch.Telefono,
             };
 
             return clienteSearchView;
@@ -80,7 +81,7 @@ namespace Business.Implementations
             {
                 Idcliente = id,
                 Nombre = nombre,
-                Direccion = direccion, 
+                Direccion = direccion,
                 Telefono = telefono,
             };
 
@@ -117,13 +118,34 @@ namespace Business.Implementations
             };
         }
 
+        //public int Eliminar(int id)
+        //{
+        //    var clienteEliminar = _bcontext.Clientes.Find(id);
+        //    _bcontext.Clientes.Remove(clienteEliminar);
+        //    _bcontext.SaveChanges();
+        //    return id;
+
+        //}
+
         public int Eliminar(int id)
         {
-            var clienteEliminar = _bcontext.Clientes.Find(id);
-            _bcontext.Clientes.Remove(clienteEliminar);
-            _bcontext.SaveChanges();
-            return id;
+            try
+            {
+                var clienteEliminar = _bcontext.Clientes.Find(id);
+                if (clienteEliminar != null)
+                {
+                    _bcontext.Clientes.Remove(clienteEliminar);
+                    _bcontext.SaveChanges();
+                }
+                return id;
+            }
+            catch (DbUpdateException ex)
+            {
+                // Captura la excepción interna para obtener más detalles
+                throw new Exception("Error al eliminar el cliente. Detalles: " + ex.InnerException?.Message, ex);
+            }
         }
+
 
     }
 }
