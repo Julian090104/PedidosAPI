@@ -51,20 +51,34 @@ namespace Infrastructure.Controllers
         }
 
         // POST api/<ClienteController>
+        //[HttpPost]
+        //public async Task<ActionResult> Post(int id, string nombre, string direccion, string telefono)
+        //{
+        //    try
+        //    {
+        //        // Pasar los parámetros al servicio para agregar el Cliente
+        //        var nuevoCliente = _services.Agregar(id, nombre, direccion, telefono);
+
+        //        // Devolver una respuesta indicando la creación exitosa del Cliente
+        //        return Ok(new { message = "egregado con exito" });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Devolver una respuesta de error si ocurre una excepción
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
+
         [HttpPost]
-        public async Task<ActionResult> Post(int id, string nombre, string direccion, string telefono)
+        public async Task<ActionResult> Post([FromBody] ClienteView cliente)
         {
             try
             {
-                // Pasar los parámetros al servicio para agregar el Cliente
-                var nuevoCliente = _services.Agregar(id, nombre, direccion, telefono);
-
-                // Devolver una respuesta indicando la creación exitosa del Cliente
-                return CreatedAtAction(nameof(GetById), new { id = nuevoCliente.Idcliente }, nuevoCliente);
+                var nuevoCliente = _services.Agregar(cliente.Idcliente, cliente.Nombre, cliente.Direccion, cliente.Telefono);
+                return Ok(new { message = "Agregado con éxito" });
             }
             catch (Exception ex)
             {
-                // Devolver una respuesta de error si ocurre una excepción
                 return BadRequest(ex.Message);
             }
         }
