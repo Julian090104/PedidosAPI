@@ -15,3 +15,6 @@ tablas:
 3. Pedido: ?
 4. DetallePedido: ?
 
+La rama Julian tiene las pruebas de Automatizacion
+con Selenium
+
