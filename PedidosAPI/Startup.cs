@@ -31,7 +31,7 @@ namespace PedidosAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PedidosAPI", Version = "Julian Tabaco" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BiblioNex", Version = "Julian Tabaco" });
             });
             
             services.AddTransient<IArticuloServices, ArticuloServices>();

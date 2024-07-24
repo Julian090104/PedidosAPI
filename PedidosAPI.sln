@@ -5,11 +5,13 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PedidosAPI", "PedidosAPI\PedidosAPI.csproj", "{9C9853E8-349E-45DB-B7FA-96EAF45FA0CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{CA58C80F-94BC-48A7-B31E-FC8E1E9B5729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{CA58C80F-94BC-48A7-B31E-FC8E1E9B5729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{800C7FBD-09BC-4A3D-8B21-677584C3B457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{800C7FBD-09BC-4A3D-8B21-677584C3B457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{759DD645-5FF4-4846-89AA-012C3619B23A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{759DD645-5FF4-4846-89AA-012C3619B23A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedidosAPITests", "PedidosAPITests\PedidosAPITests.csproj", "{4ACDA2F5-67D3-440D-8BA9-1D22ED6116F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{759DD645-5FF4-4846-89AA-012C3619B23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{759DD645-5FF4-4846-89AA-012C3619B23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{759DD645-5FF4-4846-89AA-012C3619B23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ACDA2F5-67D3-440D-8BA9-1D22ED6116F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ACDA2F5-67D3-440D-8BA9-1D22ED6116F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ACDA2F5-67D3-440D-8BA9-1D22ED6116F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ACDA2F5-67D3-440D-8BA9-1D22ED6116F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
